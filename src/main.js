@@ -2,6 +2,7 @@
 // This file imports all modules and assigns functions referenced
 // by HTML onclick attributes to the window object.
 
+import './styles/index.css';
 import './config.js';
 import './supabase.js';
 import './state.js';
