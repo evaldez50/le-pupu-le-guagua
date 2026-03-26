@@ -1,8 +1,8 @@
 // ── Supabase init ──────────────────────────────────────────────
-// PROD: zyrmayxpstuplwxtkitu  |  QA (dev branch): ruasctrwyktlumtiyuzo
-export const SUPABASE_URL = 'https://zyrmayxpstuplwxtkitu.supabase.co';
-export const SUPABASE_KEY = 'sb_publishable_4EIcEDUkSQM-M48b6ym-mg_l0OfiETk';
+// QA: ruasctrwyktlumtiyuzo  |  PROD (main branch): zyrmayxpstuplwxtkitu
+export const SUPABASE_URL = 'https://ruasctrwyktlumtiyuzo.supabase.co';
+export const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1YXNjdHJ3eWt0bHVtdGl5dXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1MzE2NDgsImV4cCI6MjA5MDEwNzY0OH0.raMhSjplK7f2U0MrARrlrNw2jOXeuQtkOjFjJVfXJiI';
 
 // ── Stripe ─────────────────────────────────────────────────────
-// PROD — Live mode (cobros reales)
-export const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/7sYbJ3gIq6xocP6f1xdMI00';
+// QA — Test mode (no cobra dinero real)
+export const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/test_7sYbJ3gIq6xocP6f1xdMI00';
