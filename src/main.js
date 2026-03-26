@@ -157,3 +157,9 @@ function init() {
 }
 
 init();
+
+// Inicializar auth cuando carga la página (igual que el original)
+document.addEventListener('DOMContentLoaded', function() {
+  renderAuthUI(); // Mostrar botón de login de inmediato (sin esperar Supabase)
+  initAuth();     // Luego cargar el estado real de sesión
+});
