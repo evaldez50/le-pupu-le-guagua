@@ -14,17 +14,11 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build
       - name: Deploy to GitHub Pages (Production)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: .
           publish_branch: gh-pages
 
   deploy-qa:
@@ -32,16 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build
       - name: Deploy to QA repo
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.QA_DEPLOY_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: .
           external_repository: evaldez50/le-pupu-qa
           publish_branch: gh-pages
