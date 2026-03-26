@@ -1,0 +1,59 @@
+/* ═══════ CONJUGADOR DE VERBOS ═══════ */
+#screen-conjugador{background:var(--off-white);}
+.conj-container{max-width:960px;margin:0 auto;padding:0 16px 60px;}
+.conj-hero{text-align:center;padding:20px 0 16px;}
+.conj-hero-icon{font-size:2.5rem;margin-bottom:6px;}
+.conj-hero-title{font-size:1.3rem;font-weight:800;color:var(--gray-800);}
+.conj-hero-sub{font-size:.85rem;color:var(--gray-600);margin-top:4px;}
+.conj-groups-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.conj-group-card{background:#fff;border:2px solid var(--gray-200);border-radius:var(--radius-md);padding:14px 12px;cursor:pointer;transition:var(--transition);text-align:left;}
+.conj-group-card:hover{border-color:var(--blue);transform:translateY(-1px);box-shadow:var(--shadow-sm);}
+.conj-group-card.selected{border-width:2.5px;box-shadow:var(--shadow-sm);}
+.conj-group-emoji{font-size:1.4rem;margin-bottom:6px;}
+.conj-group-label{font-size:.78rem;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px;}
+.conj-group-sublabel{font-size:.92rem;font-weight:700;color:var(--gray-800);}
+.conj-group-desc{font-size:.75rem;color:var(--gray-600);margin-top:3px;line-height:1.4;}
+.conj-verb-section{margin-bottom:20px;}
+.conj-verb-section-title{font-size:.78rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;}
+.conj-verb-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.conj-verb-pill{padding:8px 18px;border:2px solid var(--gray-200);border-radius:50px;background:#fff;color:var(--gray-800);font-size:.88rem;font-weight:600;cursor:pointer;transition:var(--transition);}
+.conj-verb-pill:hover{border-color:var(--blue);color:var(--blue);}
+.conj-verb-pill.selected{color:#fff;border-color:transparent;}
+.conj-verb-pill.soon{opacity:.6;}
+.conj-pill-es{font-size:.74rem;opacity:.75;margin-left:4px;}
+.conj-start-btn{width:100%;padding:15px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-md);font-size:1rem;font-weight:700;cursor:pointer;transition:var(--transition);margin-top:4px;}
+.conj-start-btn:hover{background:var(--blue-light);transform:translateY(-2px);}
+.conj-start-btn:disabled{background:var(--gray-200);color:var(--gray-400);transform:none;cursor:not-allowed;}
+.conj-practice-header{display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px;}
+.conj-practice-verb{font-size:1.1rem;font-weight:800;color:var(--gray-800);}
+.conj-practice-verb span{font-size:.8rem;font-weight:500;color:var(--gray-600);margin-left:6px;}
+.conj-score-badge{font-size:.78rem;font-weight:700;padding:4px 12px;border-radius:50px;background:var(--blue-pale);color:var(--blue);}
+/* 5x2 grid layout */
+.conj-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px;}
+@media(max-width:560px){.conj-grid{grid-template-columns:repeat(2,1fr);}}
+/* Tense cards with pronoun rows */
+.conj-container.practice-phase{max-width:none;}
+.conj-tense-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius-md);padding:10px;transition:var(--transition);}
+.conj-tense-card.correct{border-color:#22C55E;background:#F0FDF4;}
+.conj-tense-card.wrong{border-color:#EF4444;background:#FEF2F2;}
+.conj-tense-header{margin-bottom:8px;}
+.conj-tense-badge{font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:50px;color:#fff;background:var(--gray-600);display:inline-block;}
+/* Pronoun rows */
+.conj-pronoun-row{margin-bottom:6px;}
+.conj-pronoun-label{font-size:.68rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;display:block;}
+.conj-pronoun-hint{font-size:.72rem;color:var(--gray-600);margin-bottom:3px;padding:3px 7px;background:var(--gray-100);border-radius:5px;line-height:1.3;font-style:italic;}
+.conj-tense-input{width:100%;padding:6px 8px;border:1.5px solid var(--gray-200);border-radius:7px;font-size:.8rem;font-family:inherit;color:var(--gray-800);transition:var(--transition);background:#fff;box-sizing:border-box;}
+.conj-tense-input:focus{outline:none;border-color:var(--blue);}
+.conj-tense-input:disabled{background:var(--gray-100);color:var(--gray-600);}
+.conj-pronoun-feedback{font-size:.68rem;min-height:14px;margin-top:2px;line-height:1.3;word-break:break-word;}
+.conj-pronoun-feedback.ok{color:#15803D;}
+.conj-pronoun-feedback.err{color:#B91C1C;}
+/* Per-tense verify button */
+.conj-tense-verify-btn{width:100%;margin-top:8px;padding:6px 4px;border:none;border-radius:7px;background:var(--blue);color:#fff;font-size:.72rem;font-weight:700;cursor:pointer;transition:var(--transition);}
+.conj-tense-verify-btn:hover{background:var(--blue-light);}
+.conj-tense-verify-btn:disabled{background:var(--gray-200);color:var(--gray-400);cursor:not-allowed;}
+.conj-action-btns{display:flex;flex-direction:column;gap:10px;margin-top:14px;}
+.conj-retry-btn{padding:13px;border:none;border-radius:var(--radius-md);background:var(--blue);color:#fff;font-size:.93rem;font-weight:700;cursor:pointer;transition:var(--transition);}
+.conj-retry-btn:hover{background:var(--blue-light);}
+.conj-back-btn{padding:13px;border:2px solid var(--gray-200);border-radius:var(--radius-md);background:#fff;color:var(--gray-700);font-size:.93rem;font-weight:600;cursor:pointer;transition:var(--transition);}
+.conj-back-btn:hover{border-color:var(--blue);color:var(--blue);}

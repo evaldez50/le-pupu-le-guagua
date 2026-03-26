@@ -7,8 +7,9 @@
 
 ## Reglas
 
-- `index.html` es enorme (~10k líneas) — buscar secciones con Grep, no leer completo
-- Las keys del frontend (SUPABASE_KEY, STRIPE_PAYMENT_LINK) son públicas, no moverlas a .env
+- Proyecto modularizado con Vite — correr `npm run build` para verificar cambios
+- Las keys del frontend (SUPABASE_KEY, STRIPE_PAYMENT_LINK) son públicas, viven en src/config.js
 - Nunca commitear service role keys, webhook secrets, ni tokens
 - Hay 2 ambientes: PROD (main) y QA (dev) — verificar en qué rama estás antes de cambiar credenciales
+- Los onclick del HTML llaman funciones via window.* — exponer nuevas funciones en src/main.js
 - Mantener PROJECT.md actualizado como fuente de verdad del proyecto

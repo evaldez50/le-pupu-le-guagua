@@ -1,0 +1,31 @@
+/* ══ HISTORY SCREEN ══ */
+#screen-history{background:var(--off-white);}
+.history-container{max-width:680px;margin:0 auto;padding:24px 20px 60px;}
+.history-hero{text-align:center;padding:24px 0 20px;}
+.history-hero-icon{font-size:3rem;margin-bottom:8px;}
+.history-hero-title{font-size:1.5rem;font-weight:900;color:var(--gray-800);margin-bottom:4px;}
+.history-hero-sub{font-size:.9rem;color:var(--gray-600);}
+.history-stats-row{display:flex;gap:12px;justify-content:center;margin:20px 0 28px;flex-wrap:wrap;}
+.history-stat-chip{background:#fff;border:2px solid var(--gray-200);border-radius:var(--radius-md);padding:14px 20px;min-width:110px;text-align:center;box-shadow:var(--shadow-sm);}
+.history-stat-num{font-size:1.6rem;font-weight:900;color:var(--blue);line-height:1;}
+.history-stat-label{font-size:.75rem;color:var(--gray-600);font-weight:600;margin-top:3px;}
+.history-empty{text-align:center;padding:60px 20px;color:var(--gray-400);}
+.history-empty-icon{font-size:4rem;margin-bottom:16px;}
+.history-empty-text{font-size:1rem;font-weight:600;color:var(--gray-600);}
+.history-empty-sub{font-size:.88rem;color:var(--gray-400);margin-top:6px;}
+.history-list{display:flex;flex-direction:column;gap:12px;}
+.history-item{background:#fff;border-radius:var(--radius-md);padding:16px 18px;border:2px solid var(--gray-200);display:flex;align-items:center;gap:16px;box-shadow:var(--shadow-sm);transition:var(--transition);}
+.history-item:hover{border-color:var(--blue);transform:translateY(-1px);}
+.history-item-badge{width:48px;height:48px;border-radius:var(--radius-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0;}
+.history-item-body{flex:1;min-width:0;}
+.history-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px;}
+.history-item-title{font-weight:700;font-size:.92rem;color:var(--gray-800);}
+.history-item-date{font-size:.75rem;color:var(--gray-400);white-space:nowrap;}
+.history-item-meta{display:flex;align-items:center;gap:10px;}
+.history-score-bar{flex:1;height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden;}
+.history-score-fill{height:100%;border-radius:3px;transition:width .6s ease;}
+.history-score-text{font-size:.82rem;font-weight:700;white-space:nowrap;}
+.history-stars{font-size:.85rem;letter-spacing:1px;}
+.history-clear-btn{margin-top:28px;display:flex;justify-content:center;}
+.history-prog-badge{position:absolute;top:-6px;right:-6px;background:#EF4444;color:#fff;font-size:.65rem;font-weight:800;padding:2px 6px;border-radius:50px;min-width:18px;text-align:center;}
+.home-prog-btn-wrap{position:relative;display:inline-block;}
