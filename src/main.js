@@ -7,6 +7,23 @@ import './config.js';
 import './supabase.js';
 import './state.js';
 
+// ── Data imports (must be on window for all modules) ─────────
+import { LEVELS, SKILLS } from './data/levels.js';
+import { QUESTIONS } from './data/questions.js';
+import { TEMARIO, PRACTICE_BANK } from './data/temario.js';
+import { VERB_GROUPS, TENSES, PRONOUN_SLOTS } from './data/verbs.js';
+import { STUDY_TIPS } from './data/tips.js';
+
+window.LEVELS = LEVELS;
+window.SKILLS = SKILLS;
+window.QUESTIONS = QUESTIONS;
+window.TEMARIO = TEMARIO;
+window.VERB_GROUPS = VERB_GROUPS;
+window.TENSES = TENSES;
+window.PRONOUN_SLOTS = PRONOUN_SLOTS;
+window.PRACTICE_BANK = PRACTICE_BANK;
+window.STUDY_TIPS = STUDY_TIPS;
+
 import { initAuth, loginWithGoogle, loginFromProfileIcon, logout, renderAuthUI,
          toggleProfileMenu, closeProfileMenu, setUser, canAccessTopic, canAccessVerbGroup,
          activatePendingPayment } from './auth.js';
