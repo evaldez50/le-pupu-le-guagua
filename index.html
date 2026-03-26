@@ -599,14 +599,14 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     // ── Supabase init ──────────────────────────────────────────────
-    // QA: ruasctrwyktlumtiyuzo  |  PROD: zyrmayxpstuplwxtkitu
-    const SUPABASE_URL = 'https://ruasctrwyktlumtiyuzo.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1YXNjdHJ3eWt0bHVtdGl5dXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1MzE2NDgsImV4cCI6MjA5MDEwNzY0OH0.raMhSjplK7f2U0MrARrlrNw2jOXeuQtkOjFjJVfXJiI';
+    // PROD: zyrmayxpstuplwxtkitu  |  QA (dev branch): ruasctrwyktlumtiyuzo
+    const SUPABASE_URL = 'https://zyrmayxpstuplwxtkitu.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_4EIcEDUkSQM-M48b6ym-mg_l0OfiETk';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     // ── Stripe ─────────────────────────────────────────────────────
-    // TEST mode — cambiar a live link cuando se active la cuenta real
-    window.STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/test_7sYbJ3gIq6xocP6f1xdMI00';
+    // PROD — Live mode (cobros reales)
+    window.STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/7sYbJ3gIq6xocP6f1xdMI00';
 
     // Estado global del usuario
     window.appUser = { session: null, profile: null, hasPaid: false };
