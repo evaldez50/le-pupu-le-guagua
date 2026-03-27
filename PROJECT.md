@@ -97,6 +97,53 @@ supabase functions deploy stripe-webhook
 - CI/CD con GitHub Actions (main → prod, dev → QA)
 - Todo el frontend está en un solo archivo HTML de 1.8MB
 
+
+## Roadmap
+
+### Sprint 1 — MVP (Completado)
+- App funcional con niveles A1 y A2
+- Ejercicios de vocabulario y traducción
+- Interfaz responsive
+
+### Sprint 2 — Auth y Pagos (Completado)
+- Google OAuth con Supabase
+- Modelo freemium con Stripe
+- Edge function para webhook de pagos
+- CI/CD con GitHub Actions
+
+### Sprint 3 — Contenido Avanzado (Completado)
+- Conjugador de verbos completo (todos los tiempos)
+- Audio con Web Speech API
+- Sistema de progreso con localStorage + Supabase
+
+### Sprint 4 — QA y Polish (Completado)
+- Ambiente QA separado (le-pupu-qa)
+- Deploy automático main → prod, dev → QA
+- Flujo de pagos con 3 caminos (logueado, anónimo, existente)
+
+
+## Bugs conocidos
+
+| Bug | Severidad | Status |
+|---|---|---|
+| Audio TTS no funciona en Safari iOS (Web Speech API limitada) | Alto | Abierto |
+| El checkout de Stripe no pasa el reference ID en modo anónimo en algunos navegadores | Medio | Abierto |
+| El progreso local no se sincroniza si el usuario cierra sesión y vuelve a entrar con otra cuenta | Medio | Abierto |
+| Algunos verbos irregulares muestran conjugación incorrecta en subjonctif passé | Bajo | Abierto |
+| El archivo index.html de 1.8MB causa carga lenta en conexiones móviles | Alto | Abierto |
+
+
+## Siguientes pasos recomendados
+
+- [ ] **Refactorizar index.html monolítico** — Migrar a un framework (React/Vite) para reducir el archivo de 1.8MB y mejorar mantenibilidad
+- [ ] **Agregar niveles B1-C2** — Expandir contenido de vocabulario y ejercicios para niveles intermedios y avanzados
+- [ ] **Implementar spaced repetition** — Sistema de repaso espaciado para mejorar retención del vocabulario
+- [ ] **Mejorar compatibilidad iOS** — Resolver el problema de TTS en Safari usando una librería alternativa (ej: responsiveVoice)
+- [ ] **Agregar tests automatizados** — Unit tests para la lógica de ejercicios y e2e para flujos de pago
+- [ ] **Implementar modo offline** — Service Worker para uso sin conexión con contenido cacheado
+- [ ] **Analytics de uso** — Tracking de progreso agregado para entender qué niveles/ejercicios son más usados
+
+
 ## Notas para Claude Code
 
 - `index.html` es un archivo monolítico de ~10k líneas — no intentar leerlo completo, buscar secciones específicas
