@@ -1,4 +1,6 @@
 import { TEST } from '../state.js';
+import { LEVELS, SKILLS } from '../data/levels.js';
+import { QUESTIONS } from '../data/questions.js';
 import { shuffleArray } from '../utils.js';
 import { clearTimer } from '../timer.js';
 import { startTimer } from '../timer.js';

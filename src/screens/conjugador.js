@@ -1,6 +1,7 @@
 import { canAccessVerbGroup } from '../auth.js';
 import { showPaywall } from '../payment.js';
 import { showScreen } from '../navigation.js';
+import { VERB_GROUPS, TENSES, PRONOUN_SLOTS } from '../data/verbs.js';
 
 /* ────────────────────────────────────────
    CONJUGADOR FUNCTIONS
@@ -162,15 +163,6 @@ export function checkPronounSlot(userInput, slotData, slot, tenseId) {
 
   return false;
 }
-
-export const PRONOUN_SLOTS = [
-  {key:'je',   label:'Je'},
-  {key:'tu',   label:'Tu'},
-  {key:'il',   label:'Il / Elle'},
-  {key:'nous', label:'Nous'},
-  {key:'vous', label:'Vous'},
-  {key:'ils',  label:'Ils / Elles'},
-];
 
 export function renderConjPractice(c) {
   const group = VERB_GROUPS.find(g => g.id === CONJ.groupId);

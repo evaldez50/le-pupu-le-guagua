@@ -1,5 +1,7 @@
 import { canAccessTopic } from '../auth.js';
 import { showPaywall } from '../payment.js';
+import { TEMARIO, PRACTICE_BANK } from '../data/temario.js';
+import { LEVELS } from '../data/levels.js';
 
 /* ────────────────────────────────────────
    TEMARIO FUNCTIONS

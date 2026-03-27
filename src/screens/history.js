@@ -1,3 +1,5 @@
+import { LEVELS, SKILLS } from '../data/levels.js';
+
 /* ────────────────────────────────────────
    HISTORY FUNCTIONS (localStorage)
 ──────────────────────────────────────── */

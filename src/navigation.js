@@ -1,4 +1,6 @@
-import { state } from './state.js';
+import { state, TEST } from './state.js';
+import { LEVELS, SKILLS } from './data/levels.js';
+import { QUESTIONS } from './data/questions.js';
 import { renderHistory } from './screens/history.js';
 import { renderTemario } from './screens/temario.js';
 import { renderPractice } from './screens/practice.js';

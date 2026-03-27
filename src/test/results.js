@@ -1,4 +1,5 @@
 import { TEST } from '../state.js';
+import { LEVELS, SKILLS } from '../data/levels.js';
 import { clearTimer } from '../timer.js';
 import { launchConfetti } from '../utils.js';
 import { showScreen } from '../navigation.js';

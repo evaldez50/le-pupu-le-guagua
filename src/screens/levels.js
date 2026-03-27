@@ -1,4 +1,6 @@
 import { state } from '../state.js';
+import { LEVELS, SKILLS } from '../data/levels.js';
+import { QUESTIONS } from '../data/questions.js';
 import { buildSkillsTip } from './tips.js';
 
 /* ────────────────────────────────────────
