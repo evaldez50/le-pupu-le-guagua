@@ -47,16 +47,20 @@ export async function initAuth() {
       return;
     }
 
-    // Si viene de "Ya tienes cuenta", NO renderizar sesión aún — evita flash de login
+    // Suprimir renderAuthUI hasta saber el plan real, evita flash de "Plan gratuito":
+    // - loginFromProfile: puede terminar bloqueando al usuario → no mostrar logueado
+    // - postPaymentReg: activará Premium de inmediato → no mostrar gratuito brevemente
     const _isLoginFromProfile = sessionStorage.getItem('loginFromProfile') === 'true';
+    const _isPostPaymentReg   = localStorage.getItem('postPaymentReg') === 'true';
+    const _suppressRender = _isLoginFromProfile || _isPostPaymentReg;
 
     window.appUser.session = session;
     if (!session) { window.appUser.profile = null; window.appUser.hasPaid = false; }
-    if (!_isLoginFromProfile) renderAuthUI();
+    if (!_suppressRender) renderAuthUI();
 
     // Cargar datos del perfil (hasPaid, etc.)
     await setUser(session);
-    if (!_isLoginFromProfile) renderAuthUI();
+    if (!_suppressRender) renderAuthUI();
 
     if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') {
       if (session) {
@@ -122,7 +126,9 @@ export async function initAuth() {
   if (error) console.warn('[Auth] getSession ERROR:', error.message);
   console.log('[Auth] getSession result:', session?.user?.email || 'sin sesión');
 
-  if (session && !window.appUser.session) {
+  // _forceSignOut activo significa que el handler ya limpió la sesión intencionalmente
+  // No mostrar el usuario como logueado mientras se procesa el signOut
+  if (session && !window.appUser.session && !window._forceSignOut) {
     await setUser(session);
     renderAuthUI();
   } else if (!session && !window.appUser.session) {

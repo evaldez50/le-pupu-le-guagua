@@ -6,8 +6,9 @@ import { launchConfetti } from './utils.js';
 // Checkout para usuarios ya logueados (con client_reference_id)
 export async function startCheckout() {
   if (!window.appUser.session) {
-    // Fallback: si por alguna razón no hay sesión, login desde perfil
-    sessionStorage.setItem('loginFromProfile', 'true');
+    // Fallback: sesión expirada — hacer login y luego retomar el checkout
+    // Usar pendingCheckout (NO loginFromProfile) para no bloquear al usuario
+    sessionStorage.setItem('pendingCheckout', 'true');
     await window.loginWithGoogle();
     return;
   }
