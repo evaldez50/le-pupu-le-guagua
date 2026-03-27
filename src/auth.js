@@ -323,7 +323,7 @@ export async function logout() {
   }
   // Limpiar manualmente localStorage de Supabase por si signOut no lo hizo
   Object.keys(localStorage).forEach(key => {
-    if (key.startsWith('sb-') && (key.endsWith('-auth-token') || key.endsWith('-auth-token-code-verifier'))) {
+    if (key.startsWith('sb-') || key.startsWith('supabase.auth.')) {
       localStorage.removeItem(key);
     }
   });
