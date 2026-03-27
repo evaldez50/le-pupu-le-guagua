@@ -93,11 +93,15 @@ export function registerAfterPayment() {
 export async function showPaywall(msg) {
   // Siempre verificar en BD si el usuario está logueado antes de mostrar el paywall
   if (window.appUser.session) {
-    const { data } = await _supabase.from('user_profiles')
-      .select('has_paid').eq('id', window.appUser.session.user.id).single();
-    if (data?.has_paid) {
-      window.appUser.hasPaid = true;
-      return; // Ya pagó, no mostrar paywall
+    try {
+      const { data } = await _supabase.from('user_profiles')
+        .select('has_paid').eq('id', window.appUser.session.user.id).single();
+      if (data?.has_paid) {
+        window.appUser.hasPaid = true;
+        return; // Ya pagó, no mostrar paywall
+      }
+    } catch (e) {
+      console.warn('[Payment] showPaywall DB check failed:', e.message);
     }
   }
   const m = document.getElementById('paywall-modal');
