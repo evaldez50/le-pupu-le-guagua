@@ -69,7 +69,7 @@ export function renderTemario() {
     const hasPractice = !!PRACTICE_BANK[item.t];
     const practiceBtn = hasPractice
       ? `<button class="temario-practice-btn"
-           onclick='startPractice(${JSON.stringify(item.t)})'>▶ Practicar</button>`
+           onclick="startPractice(${JSON.stringify(item.t).replace(/"/g, '&quot;')})">▶ Practicar</button>`
       : '';
     return `<div class="temario-item">
       <div class="temario-item-top">
