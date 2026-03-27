@@ -2,6 +2,9 @@
 
 Aplicación web para aprender francés desde español. Incluye ejercicios interactivos por niveles (A1–C2), conjugador de verbos, práctica con audio (text-to-speech), sistema de progreso, y modelo freemium con pagos via Stripe y autenticación con Google OAuth via Supabase.
 
+
+**Versión:** 1.0.0
+
 ## Stack tecnológico
 
 - **Frontend:** HTML + CSS + JavaScript vanilla (single-file `index.html`, ~10k líneas)
@@ -143,6 +146,28 @@ supabase functions deploy stripe-webhook
 - [ ] **Implementar modo offline** — Service Worker para uso sin conexión con contenido cacheado
 - [ ] **Analytics de uso** — Tracking de progreso agregado para entender qué niveles/ejercicios son más usados
 
+
+## Changelog
+
+### v1.0.0 — 2026-03-01
+- App completa con niveles A1 y A2
+- Conjugador de verbos con todos los tiempos del francés
+- Auth con Google OAuth via Supabase
+- Modelo freemium con Stripe Checkout
+- CI/CD con GitHub Actions (main -> prod, dev -> QA)
+- Audio con Web Speech API para pronunciación
+- Progreso guardado en localStorage + Supabase
+
+### v0.2.0 — 2026-02-15
+- Agregado conjugador de verbos completo
+- Agregado sistema de pagos con Stripe
+- Agregado ambiente QA separado (le-pupu-qa)
+- Fix: flujo de activación de pagos pendientes
+
+### v0.1.0 — 2026-01-20
+- MVP con ejercicios básicos A1
+- Interfaz responsive mobile-first
+- Datos de vocabulario embebidos en HTML
 
 ## Notas para Claude Code
 
