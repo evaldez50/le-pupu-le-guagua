@@ -23,7 +23,7 @@ export const TEMARIO = {
     {t:'Décrire des personnes et des lieux',  d:'Descripción física, de personalidad y de espacios.',        s:['co','ce','eo','ee']},
     {t:'Directions et transports en commun', d:'Pedir y dar indicaciones, usar metro/bus/tren en francés.',  s:['co','ce','eo']},
     {t:'Habitudes quotidiennes et routines',  d:'Expresar actividades habituales con adverbios de frecuencia.',s:['co','ce','eo','ee']},
-    {t:'Logement et domicile',               d:'Tipos de vivienda, piezas de la casa y mobiliario.',         s:['co','ce','oe','ee']},
+    {t:'Logement et domicile',               d:'Tipos de vivienda, piezas de la casa y mobiliario.',         s:['co','ce','eo','ee']},
     {t:'Loisirs, hobbies et divertissements',d:'Hablar de aficiones, deportes y actividades de ocio.',       s:['co','ce','eo','ee']},
     {t:'Numération étendue (100–1 000 000)', d:'Millares, millones y lectura de cantidades en contexto.',    s:['co','ce']},
     {t:'Passé composé et imparfait (base)',   d:'Narrar eventos pasados y describir estados anteriores.',     s:['co','ce','eo','ee']},
