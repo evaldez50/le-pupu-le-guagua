@@ -17,7 +17,7 @@ export const PRACTICE = {
   answered: false,
 };
 
-export function startPractice(topicName) {
+export async function startPractice(topicName) {
   const data = PRACTICE_BANK[topicName];
   if (!data) return;
 
@@ -29,8 +29,7 @@ export function startPractice(topicName) {
   );
   const temaIndex = sortedTopics.findIndex(item => item.t === topicName);
   if (!canAccessTopic(nivelActual, temaIndex)) {
-    alert('DEBUG: bloqueado por freemium. Nivel=' + nivelActual + ' index=' + temaIndex);
-    showPaywall('Para practicar más de 3 temas por nivel necesitas la versión completa.');
+    await showPaywall('Para practicar más de 3 temas por nivel necesitas la versión completa.');
     return;
   }
 
