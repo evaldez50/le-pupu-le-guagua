@@ -310,10 +310,10 @@ export function loginFromProfileIcon() {
 
 export async function logout() {
   closeProfileMenu();
-  // Limpiar estado local PRIMERO — UI cambia de inmediato sin esperar Supabase
+  // Limpiar estado local — UI cambia de inmediato
   window.appUser = { session: null, profile: null, hasPaid: false };
   renderAuthUI();
-  // Cerrar sesión en Supabase
+  // Cerrar sesión en Supabase y esperar a que termine
   try {
     const { error } = await _supabase.auth.signOut({ scope: 'local' });
     if (error) console.error('[Auth] signOut error:', error.message);
@@ -321,12 +321,17 @@ export async function logout() {
   } catch(e) {
     console.error('[Auth] signOut exception:', e.message);
   }
-  // Limpiar manualmente localStorage de Supabase por si signOut no lo hizo
+  // Esperar un tick para que el listener de SIGNED_OUT termine
+  await new Promise(r => setTimeout(r, 100));
+  // Limpiar manualmente localStorage de Supabase
   Object.keys(localStorage).forEach(key => {
     if (key.startsWith('sb-') || key.startsWith('supabase.auth.')) {
       localStorage.removeItem(key);
     }
   });
+  // Resetear estado una vez más por si el listener lo modificó
+  window.appUser = { session: null, profile: null, hasPaid: false };
+  renderAuthUI();
 }
 
 export function renderAuthUI() {
