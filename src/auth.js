@@ -308,26 +308,22 @@ export function loginFromProfileIcon() {
   window.showPaywall('Inicia sesión o crea tu cuenta para acceder a todas las funciones.');
 }
 
-export async function logout() {
+export function logout() {
   closeProfileMenu();
-  // Limpiar estado local inmediatamente
-  window.appUser = { session: null, profile: null, hasPaid: false };
-  // Cerrar sesión en Supabase
-  try {
-    const { error } = await _supabase.auth.signOut({ scope: 'local' });
-    if (error) console.error('[Auth] signOut error:', error.message);
-    else console.log('[Auth] signOut OK');
-  } catch(e) {
-    console.error('[Auth] signOut exception:', e.message);
-  }
-  // Limpiar manualmente localStorage de Supabase
+  // Limpiar localStorage de Supabase PRIMERO (sincrónico)
   Object.keys(localStorage).forEach(key => {
     if (key.startsWith('sb-') || key.startsWith('supabase.auth.')) {
       localStorage.removeItem(key);
     }
   });
-  // Resetear estado y actualizar UI al final
+  // Limpiar estado local
   window.appUser = { session: null, profile: null, hasPaid: false };
+  // Cerrar sesión en Supabase (fire-and-forget, no await)
+  _supabase.auth.signOut({ scope: 'local' }).then(({ error }) => {
+    if (error) console.error('[Auth] signOut error:', error.message);
+    else console.log('[Auth] signOut OK');
+  }).catch(e => console.error('[Auth] signOut exception:', e.message));
+  // Actualizar UI
   renderAuthUI();
 }
 
