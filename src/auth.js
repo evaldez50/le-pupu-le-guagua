@@ -313,14 +313,20 @@ export async function logout() {
   // Limpiar estado local PRIMERO — UI cambia de inmediato sin esperar Supabase
   window.appUser = { session: null, profile: null, hasPaid: false };
   renderAuthUI();
-  // Luego cerrar sesión en Supabase (no bloquea la UI)
+  // Cerrar sesión en Supabase
   try {
-    const { error } = await _supabase.auth.signOut();
+    const { error } = await _supabase.auth.signOut({ scope: 'local' });
     if (error) console.error('[Auth] signOut error:', error.message);
     else console.log('[Auth] signOut OK');
   } catch(e) {
     console.error('[Auth] signOut exception:', e.message);
   }
+  // Limpiar manualmente localStorage de Supabase por si signOut no lo hizo
+  Object.keys(localStorage).forEach(key => {
+    if (key.startsWith('sb-') && (key.endsWith('-auth-token') || key.endsWith('-auth-token-code-verifier'))) {
+      localStorage.removeItem(key);
+    }
+  });
 }
 
 export function renderAuthUI() {
