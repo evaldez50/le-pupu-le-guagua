@@ -1,4 +1,5 @@
 import { state, TEST } from './state.js';
+import { initLandingCounters } from './landing.js';
 import { LEVELS, SKILLS } from './data/levels.js';
 import { QUESTIONS } from './data/questions.js';
 import { renderHistory } from './screens/history.js';
@@ -26,6 +27,7 @@ export function showScreen(id) {
     if (id === 'temario') renderTemario();
     if (id === 'practice') renderPractice();
     if (id === 'conjugador') renderConjugador();
+    if (id === 'landing') initLandingCounters();
   }, 90);
 }
 

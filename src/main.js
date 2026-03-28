@@ -42,6 +42,7 @@ import { buildEOQuestion, toggleEORecording, startEORecording, stopEORecording,
          handleEOSelfAssess } from './test/eo.js';
 import { showFeedback, recordAnswer, nextQuestion, showResults, retryTest } from './test/results.js';
 import { renderLevelsGrid, renderSkillsScreen } from './screens/levels.js';
+import { initLandingCounters, initTestimonialCarousel, incrementExerciseCount } from './landing.js';
 import { renderHistory, clearHistory, updateHistoryBadge } from './screens/history.js';
 import { buildSkillsTip, buildResultsTip } from './screens/tips.js';
 import { renderTemario, temarioSetLevel } from './screens/temario.js';
@@ -136,6 +137,9 @@ window.handlePracticeTF = handlePracticeTF;
 window.nextPracticeQuestion = nextPracticeQuestion;
 window.retryPractice = retryPractice;
 
+// Landing
+window.incrementExerciseCount = incrementExerciseCount;
+
 // Conjugador
 window.exitConjugador = exitConjugador;
 window.selectConjGroup = selectConjGroup;
@@ -154,6 +158,8 @@ function init() {
   createStars();
   renderLevelsGrid();
   updateHistoryBadge();
+  initTestimonialCarousel();
+  initLandingCounters();
 }
 
 init();

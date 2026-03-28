@@ -36,6 +36,9 @@ export function startTest(skillId, levelId) {
   document.getElementById('testProgressFill').style.background =
     `linear-gradient(90deg, ${lvl.colorMain}, ${fillColor})`;
 
+  // Incrementar contador global de ejercicios para la landing
+  if (typeof window.incrementExerciseCount === 'function') window.incrementExerciseCount();
+
   renderQuestion();
   showScreen('test');
 }
