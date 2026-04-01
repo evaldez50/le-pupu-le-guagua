@@ -126,6 +126,7 @@ window.renderHistory = renderHistory;
 window.clearHistory = clearHistory;
 
 // Temario
+window.renderTemario = renderTemario;
 window.temarioSetLevel = temarioSetLevel;
 
 // Practice
