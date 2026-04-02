@@ -115,7 +115,7 @@ export async function showPaywall(msg) {
       const hasPaid  = window.appUser && window.appUser.hasPaid;
       if (loggedIn && !hasPaid) {
         // ESCENARIO 2: Logueado sin pago → completar pago con su cuenta
-        btn.textContent = '💳 Completar pago — $29.99 USD';
+        btn.textContent = '💳 Completar pago — $19.99 USD';
         btn.onclick = function() {
           document.getElementById('paywall-modal').style.display = 'none';
           startCheckout();
@@ -123,7 +123,7 @@ export async function showPaywall(msg) {
         if (loginLink) loginLink.style.display = 'none';
       } else if (!loggedIn) {
         // ESCENARIO 1: Sin cuenta → ir directo a Stripe, registrar después
-        btn.textContent = '💳 Comprar acceso completo — $29.99 USD';
+        btn.textContent = '💳 Comprar acceso completo — $19.99 USD';
         btn.onclick = function() {
           document.getElementById('paywall-modal').style.display = 'none';
           startAnonymousCheckout();
@@ -133,7 +133,7 @@ export async function showPaywall(msg) {
     }
     m.style.display = 'flex';
   } else {
-    alert('🔒 ' + (msg || 'Esta función requiere una cuenta de pago. Precio: $29.99 USD (pago único)'));
+    alert('🔒 ' + (msg || 'Esta función requiere una cuenta de pago. Precio: $19.99 USD (pago único)'));
   }
 }
 
