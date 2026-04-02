@@ -1154,6 +1154,41 @@
   line-height: 1.7;
 }
 
+.landing-footer-links {
+  margin-top: 12px;
+  font-size: .8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.landing-footer-links a {
+  color: rgba(255,255,255,.45);
+  text-decoration: none;
+}
+
+.landing-footer-links a:hover {
+  color: rgba(255,255,255,.7);
+  text-decoration: underline;
+}
+
+.landing-footer-links span {
+  color: rgba(255,255,255,.2);
+}
+
+.landing-footer-contact {
+  margin-top: 8px;
+  font-size: .78rem;
+  color: rgba(255,255,255,.35);
+}
+
+.landing-footer-copy {
+  margin-top: 8px;
+  font-size: .72rem;
+  color: rgba(255,255,255,.18);
+}
+
 /* ══ RESPONSIVE ══ */
 @media (max-width: 680px) {
   .landing-nav-enter { display: none; }
