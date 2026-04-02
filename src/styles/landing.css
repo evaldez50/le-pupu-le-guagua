@@ -1201,3 +1201,74 @@
 
   .landing-hero h1 { font-size: 1.75rem; }
 }
+
+/* ══ FAQ ══ */
+.landing-faq {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.landing-faq-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.landing-faq-item summary {
+  padding: 18px 24px;
+  font-weight: 700;
+  font-size: .97rem;
+  color: #1a1a2e;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-faq-item summary::after {
+  content: '+';
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0055A4;
+  transition: transform .2s;
+}
+
+.landing-faq-item[open] summary::after {
+  content: '−';
+}
+
+.landing-faq-item p {
+  padding: 0 24px 20px;
+  margin: 0;
+  font-size: .92rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* ══ LEGAL / T&C ══ */
+.landing-legal {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.landing-legal h3 {
+  font-size: .95rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 28px 0 8px;
+}
+
+.landing-legal h3:first-child {
+  margin-top: 0;
+}
+
+.landing-legal p {
+  font-size: .88rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 6px;
+}
