@@ -5,4 +5,4 @@ export const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdX
 
 // ── Stripe ─────────────────────────────────────────────────────
 // QA — Test mode (no cobra dinero real)
-export const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/test_7sYbJ3gIq6xocP6f1xdMI00';
+export const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/test_00wfZj9fYg7Y16obPldMI01';
