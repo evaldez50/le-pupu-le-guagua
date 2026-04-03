@@ -7,11 +7,11 @@ Aplicación web para aprender francés desde español. Incluye ejercicios intera
 - **Frontend:** Vanilla JS modularizado con Vite como bundler
 - **Auth:** Supabase Auth con Google OAuth (@supabase/supabase-js via npm)
 - **Base de datos:** Supabase (PostgreSQL) — tablas `user_profiles` y `pending_activations`
-- **Pagos:** Stripe Checkout (payment links)
+- **Pagos:** Stripe Checkout (payment links) — $19.99 USD pago único
 - **Backend:** Supabase Edge Function (Deno/TypeScript) para webhook de Stripe
 - **Deploy:** GitHub Pages via GitHub Actions (main → prod, dev → QA) con build step
 - **Audio:** Web Speech API (SpeechSynthesis) para pronunciación
-- **Build:** Vite 5 — bundle de 260KB (70KB gzip)
+- **Build:** Vite 5
 
 ## Variables de entorno
 
@@ -33,22 +33,23 @@ Aplicación web para aprender francés desde español. Incluye ejercicios intera
 
 ```
 le-pupu-le-guagua/
-├── index.html                              # HTML slim: pantallas y modals
+├── index.html                              # HTML slim: pantallas, modals y modal legal
 ├── package.json                            # Dependencias: vite, @supabase/supabase-js
 ├── vite.config.js                          # Config Vite
 ├── src/
 │   ├── main.js                             # Entry point: imports + window bindings + init
-│   ├── config.js                           # Constantes Supabase/Stripe
+│   ├── config.js                           # Constantes Supabase/Stripe (varían por ambiente)
 │   ├── supabase.js                         # Cliente Supabase
 │   ├── state.js                            # Estado global (state, TEST, appUser)
-│   ├── auth.js                             # Google OAuth, sesiones, renderAuthUI
-│   ├── payment.js                          # Stripe checkout, paywall, modals
+│   ├── auth.js                             # Google OAuth, sesiones, renderAuthUI, canAccess*
+│   ├── payment.js                          # Stripe checkout, paywall, modals ($19.99)
 │   ├── navigation.js                       # showScreen, selectLevel, selectSkill
+│   ├── landing.js                          # Contadores landing, carrusel testimonios
 │   ├── timer.js                            # Timer de exámenes
 │   ├── utils.js                            # shuffleArray, showToast, speakFrench, etc.
 │   ├── data/
 │   │   ├── levels.js                       # LEVELS y SKILLS
-│   │   ├── questions.js                    # Banco de preguntas (~900 líneas)
+│   │   ├── questions.js                    # Banco de preguntas (24 combinaciones nivel+skill)
 │   │   ├── tips.js                         # STUDY_TIPS
 │   │   ├── temario.js                      # TEMARIO (~3700 líneas)
 │   │   └── verbs.js                        # TENSES, VERB_GROUPS (~1870 líneas)
@@ -63,7 +64,7 @@ le-pupu-le-guagua/
 │   │   ├── levels.js                       # Render de grids de niveles/skills
 │   │   ├── history.js                      # Historial de resultados
 │   │   ├── tips.js                         # Tips de estudio
-│   │   ├── temario.js                      # Pantalla de temario
+│   │   ├── temario.js                      # Pantalla de temario (renderTemario expuesto en window)
 │   │   ├── practice.js                     # Modo práctica
 │   │   └── conjugador.js                   # Conjugador de verbos
 │   └── styles/
@@ -71,6 +72,7 @@ le-pupu-le-guagua/
 │       ├── variables.css                   # Variables CSS, reset, utilidades
 │       ├── layout.css                      # Topbar, auth UI, profile menu
 │       ├── home.css                        # Pantalla home
+│       ├── landing.css                     # Landing page + FAQ + legal + footer
 │       ├── levels.css                      # Pantalla de niveles
 │       ├── skills.css                      # Pantalla de habilidades
 │       ├── test.css                        # Pantalla de examen
@@ -79,7 +81,7 @@ le-pupu-le-guagua/
 │       ├── history.css                     # Historial
 │       ├── temario.css                     # Temario y práctica
 │       └── conjugador.css                  # Conjugador
-├── .github/workflows/deploy.yml            # CI/CD con build step
+├── .github/workflows/deploy.yml            # CI/CD con build step (dev→QA, main→PROD)
 ├── supabase/
 │   ├── config.toml                         # Config del proyecto Supabase
 │   └── functions/stripe-webhook/index.ts   # Edge function para webhook de Stripe
@@ -108,23 +110,40 @@ npm run preview
 
 ## Status actual
 
-- App funcional con Vite como bundler
-- Modularizada: ~33 archivos JS/CSS separados desde un HTML monolítico
-- Build de producción: 260KB JS + 18KB HTML (70KB gzip)
-- 9 pantallas: home, levels, skills, test, results, history, temario, practice, conjugador
-- Niveles A1–C2 con contenido completo
-- 4 habilidades TEF: CE, CO, EE, EO
-- Conjugador de verbos completo
-- Modelo freemium con Stripe + Google OAuth
-- CI/CD con GitHub Actions (main → prod, dev → QA)
-- 2 ambientes: PROD (zyrmayxpstuplwxtkitu) y QA (ruasctrwyktlumtiyuzo)
+### QA (rama dev) — validado
+- App modularizada con Vite, funcionando en https://evaldez50.github.io/le-pupu-qa/
+- 10 pantallas: landing, home, levels, skills, test, results, history, temario, practice, conjugador
+- Landing page completa con: hero, features, levels, how-it-works, conjugador, pricing, testimonios, FAQ (6 preguntas), CTA, footer
+- Legal (T&C, privacidad, pagos, OAuth) en modal accesible desde footer
+- Precio: $19.99 USD (lanzamiento) / $39.99 USD (regular)
+- Stripe en modo TEST (no cobra dinero real)
+- Supabase QA: ruasctrwyktlumtiyuzo
+- Copy legal validado: sin promesas de certificación ni resultados garantizados
+- Testimonios sin lenguaje de garantía
+
+### PROD (rama main) — pendiente de migrar
+- Todavía tiene el HTML monolítico (~10,000 líneas) sin modularizar
+- Supabase PROD: zyrmayxpstuplwxtkitu
+- Para migrar: mergear dev → main, cambiar config.js a credenciales PROD y Stripe live link
+
+## Pendientes para migrar a PROD
+
+1. Mergear `dev` → `main`
+2. Cambiar `src/config.js` a credenciales PROD:
+   - SUPABASE_URL: zyrmayxpstuplwxtkitu
+   - SUPABASE_KEY: (la anon key de prod)
+   - STRIPE_PAYMENT_LINK: https://buy.stripe.com/00wfZj9fYg7Y16obPldMI01
+3. Verificar deploy en https://evaldez50.github.io/le-pupu-le-guagua/
+4. Verificar flujo de pago con Stripe live
 
 ## Notas para Claude Code
 
 - Los módulos JS usan `window.*` para exponer funciones a los onclick del HTML
+- Si agregas una función que se llama desde onclick en HTML, DEBES exponerla en src/main.js con `window.nombreFuncion = nombreFuncion`
 - Las credenciales del frontend son públicas por diseño (anon key + payment link)
 - Los datos están en `src/data/` — temario.js y verbs.js son los más grandes (~5500 líneas juntos)
 - Circular deps entre auth.js y payment.js se resuelven con late binding via window
-- Hay 2 ambientes: PROD (main) y QA (dev) — verificar rama antes de cambiar credenciales
 - Nunca commitear service role keys, webhook secrets, ni tokens de deploy
 - El build genera `dist/` — el deploy usa `dist/`, no la raíz
+- El repo `le-pupu-qa` NO tiene código fuente — es solo destino de deploy para QA
+- El cache de GitHub Pages tarda ~2-5 minutos en actualizarse tras un deploy
