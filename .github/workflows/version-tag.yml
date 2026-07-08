@@ -24,6 +24,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false
+          default_prerelease_bump: false
           release_branches: main
           pre_release_branches: dev
           append_to_pre_release_tag: qas
