@@ -1,5 +1,7 @@
 # Plan de Mejoras — le-pupu-le-guagua
 
+> ⏸️ **PROYECTO EN PAUSA (decisión de Erick, 2026-07-10).** No trabajar este plan hasta que Erick lo reactive. Al reactivar, la Fase 1 (XSS + RLS) va primero — los riesgos siguen vigentes.
+
 > Fuente: Auditoría integral 2026-07-03 (`AUDITORIA-PROYECTOS-2026-07-03.md` en el directorio contenedor).
 > **Calidad: 6.5/10 · Riesgo: 🔴 ALTO** (XSS + sin RLS).
 > Uso: marca los checkboxes al completar. Prompts para sesiones de Claude Code en esta carpeta, rama `dev`.
